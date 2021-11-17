@@ -1,0 +1,29 @@
+title:
+    - "Reading an ro-crate metadata file"
+skills:
+    - json
+    - ngrams
+    - metadata
+    - dataframes
+    - dict()
+tools:
+    - requests
+    - spacy
+    - textacy
+    - requests
+    - itertools
+    - pandas
+    - datetime
+    - statistics
+    - collections (Counter)
+workflow:
+    - previous:
+        - [web-scraping](https://github.com/Australian-Text-Analytics-Platform/open-australia-api)
+contributors:
+    - https://orcid.org/0000-0001-6147-120X
+datePublished:
+    - 2021-11-10
+lastUpdatedBy:
+    - https://orcid.org/0000-0001-6147-120X
+dateUpdated:
+    - 2021-11-17
