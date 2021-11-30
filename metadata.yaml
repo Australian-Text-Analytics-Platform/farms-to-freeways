@@ -1,11 +1,12 @@
 title:
-    - "Reading an ro-crate metadata file"
+    - "Loading Farms to Freeways from the API and ro-crate metadata file"
 skills:
     - json
     - ngrams
     - metadata
     - dataframes
     - dict()
+    - rest api
 tools:
     - requests
     - spacy
@@ -16,14 +17,17 @@ tools:
     - datetime
     - statistics
     - collections (Counter)
+roadblocks:
+    - generate api key
 workflow:
     - previous:
         - [web-scraping](https://github.com/Australian-Text-Analytics-Platform/open-australia-api)
 contributors:
     - https://orcid.org/0000-0001-6147-120X
+    - https://orcid.org/0000-0002-4438-2755
 datePublished:
     - 2021-11-10
 lastUpdatedBy:
-    - https://orcid.org/0000-0001-6147-120X
+    - https://orcid.org/0000-0002-4438-2755
 dateUpdated:
-    - 2021-11-17
+    - 2021-11-30
