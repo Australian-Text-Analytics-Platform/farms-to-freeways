@@ -10,10 +10,7 @@ from notebook_embedder import embed_notebook_metadata
 from metadata import extract_default_authors, extract_notebook_metadata, AuthorInfo
 
 NOTEBOOK_EXTENSION = ".ipynb"
-DESCRIPTION = """
-Embeds rocrate data within every jupyter notebook in the directory, and then
-creates a parent rocrate in the same directory.
-"""
+DESCRIPTION = "Creates an rocrate for all the notebooks in a given directory."
 DEFAULT_CRATE_NAME = "ro-crate-metadata.json"
 METADATA_KEY = "ro-crate"
 TEMP_DIR = "/tmp/crate_hole"
