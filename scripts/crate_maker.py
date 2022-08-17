@@ -100,6 +100,7 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
     properties = {
         "name": notebook_metadata["title"],
         "description": notebook_metadata["description"],
+        "input": notebook_metadata["input"],
         "encodingFormat": "application/x-ipynb+json",
     }
     file = crate.add_file(notebook, properties=properties)
