@@ -30,8 +30,8 @@ def main():
     args = parser.parse_args()
 
     notebooks = get_notebooks(args.dir)
-    for notebook in notebooks:
-        update_notebook_metadata(notebook, args.metadata)
+    # for notebook in notebooks:
+    #     update_notebook_metadata(notebook, args.metadata)
 
     create_root_crate(args.dir, notebooks, args.metadata)
 
