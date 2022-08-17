@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List
 from rocrate.rocrate import ROCrate
 from rocrate.model.person import Person
+from rocrate.model.contextentity import ContextEntity
 from notebook_embedder import embed_notebook_metadata
 from metadata import extract_default_authors, extract_notebook_metadata, AuthorInfo
 
@@ -98,13 +99,14 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
 
     # Add the notebook to the crate
     properties = {
+        "@type": ["File", "SoftwareApplication"],
         "name": notebook_metadata["title"],
         "description": notebook_metadata["description"],
         "input": notebook_metadata["input"],
         "encodingFormat": "application/x-ipynb+json",
         "conformsTo": "https://purl.archive.org/textcommons/profile#Notebook"
     }
-    file = crate.add_file(notebook, properties=properties)
+    file = crate.add(ContextEntity(crate, notebook.name, properties=properties))
 
     # Generate and add the authors to the crate
     authors = create_people(crate, notebook_metadata["creators"])
