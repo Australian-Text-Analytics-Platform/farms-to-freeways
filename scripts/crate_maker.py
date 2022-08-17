@@ -17,8 +17,6 @@ creates a parent rocrate in the same directory.
 DEFAULT_CRATE_NAME = "ro-crate-metadata.json"
 METADATA_KEY = "ro-crate"
 TEMP_DIR = "/tmp/crate_hole"
-# If you prefer to copy the rocrate into the notebook metadata, make this True
-COPY_ROCRATE = False
 
 
 def main():
