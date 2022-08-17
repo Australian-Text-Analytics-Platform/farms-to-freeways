@@ -4,7 +4,7 @@
         {
             "@id": "./",
             "@type": "Dataset",
-            "datePublished": "2022-08-17T02:29:42+00:00"
+            "datePublished": "2022-08-17T03:01:40+00:00"
         },
         {
             "@id": "ro-crate-metadata.json",
@@ -27,12 +27,18 @@
                     "@id": "#0000-0003-0879-9251"
                 }
             ],
-            "conformsTo": "https://purl.archive.org/textcommons/profile#Notebook",
+            "conformsTo": [
+                {
+                    "@id": "https://purl.archive.org/textcommons/profile#Notebook"
+                }
+            ],
             "description": "A sample notebook for the Farms to Freeways data",
             "encodingFormat": "application/x-ipynb+json",
             "input": [
                 {
-                    "@id": "arcp://name,farms-to-freeways/corpus/root"
+                    "@id": {
+                        "@id": "arcp://name,farms-to-freeways/corpus/root"
+                    }
                 }
             ],
             "name": "Farms to freeways notebook"
