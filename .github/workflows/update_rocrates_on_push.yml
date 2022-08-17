@@ -2,7 +2,7 @@ name: Update ro-crates
 on:
   push:
     branches: 
-      - master
+      - main
     paths:
       - '**.ipynb'
 jobs:
@@ -35,4 +35,4 @@ jobs:
 
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@main
