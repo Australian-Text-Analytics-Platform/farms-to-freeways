@@ -2,7 +2,7 @@ import os
 import argparse
 import shutil
 from pathlib import Path
-from typing import List
+from typing import Optional, List
 from rocrate.rocrate import ROCrate
 from rocrate.model.person import Person
 from rocrate.model.contextentity import ContextEntity
@@ -86,10 +86,12 @@ def generate_notebook_crate(notebook: Path, metadata: Path) -> ROCrate:
     return crate
 
 
-def id_ify(elements: List[str]) -> List[dict]:
+def id_ify(elements: Optional[List[str], str]) -> List[dict]:
     """Wraps elements in a list with @id keys
     eg, convert ['a', 'b'] to [{'@id': 'a'}, {'@id': 'b'}]
     """
+    # If the input is a string, make it a list
+    elements = [elements] if isinstance(elements, str) else elements
     return [{"@id": element} for element in elements]
 
 
@@ -121,7 +123,7 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
         "description": notebook_metadata["description"],
         "input": id_ify(notebook_metadata["input"]),
         "encodingFormat": "application/x-ipynb+json",
-        "conformsTo": id_ify(["https://purl.archive.org/textcommons/profile#Notebook"])
+        "conformsTo": id_ify("https://purl.archive.org/textcommons/profile#Notebook")
     }
     file = crate.add(ContextEntity(crate, notebook.name, properties=properties))
 
