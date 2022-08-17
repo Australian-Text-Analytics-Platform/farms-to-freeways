@@ -32,11 +32,6 @@ def main():
     args = parser.parse_args()
 
     notebooks = get_notebooks(args.dir)
-
-    if COPY_ROCRATE:
-        for notebook in notebooks:
-            update_notebook_metadata(notebook, args.metadata)
-
     create_root_crate(args.dir, notebooks, args.metadata)
 
 
@@ -52,22 +47,6 @@ def get_notebooks(dir: Path) -> List[Path]:
     files = [Path(file) for file in os.listdir(dir)]
     is_notebook = lambda file: file.suffix == NOTEBOOK_EXTENSION
     return list(filter(is_notebook, files))
-
-
-def update_notebook_metadata(notebook: Path, metadata: Path) -> None:
-    """Creates and embeds an rocrate in the metadata of a jupyter notebooks
-
-    Parameters:
-        notebook: The path of a jupyter notebook
-        metadata: A metadata file containing author information
-
-    """
-    crate = generate_notebook_crate(notebook, metadata)
-    crate_file = create_temporary_crate_file(crate)
-    with open(crate_file) as in_file:
-        data = in_file.read()
-    embed_notebook_metadata(notebook, METADATA_KEY, data)
-    clean_up()
 
 
 def generate_notebook_crate(notebook: Path, metadata: Path) -> ROCrate:
