@@ -2,7 +2,7 @@ import os
 import argparse
 import shutil
 from pathlib import Path
-from typing import Optional, List
+from typing import Union, List
 from rocrate.rocrate import ROCrate
 from rocrate.model.person import Person
 from rocrate.model.contextentity import ContextEntity
@@ -86,7 +86,7 @@ def generate_notebook_crate(notebook: Path, metadata: Path) -> ROCrate:
     return crate
 
 
-def id_ify(elements: Optional[List[str], str]) -> List[dict]:
+def id_ify(elements: Union[List[str], str]) -> List[dict]:
     """Wraps elements in a list with @id keys
     eg, convert ['a', 'b'] to [{'@id': 'a'}, {'@id': 'b'}]
     """
