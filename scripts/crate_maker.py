@@ -17,6 +17,8 @@ creates a parent rocrate in the same directory.
 DEFAULT_CRATE_NAME = "ro-crate-metadata.json"
 METADATA_KEY = "ro-crate"
 TEMP_DIR = "/tmp/crate_hole"
+# If you prefer to copy the rocrate into the notebook metadata, make this True
+COPY_ROCRATE = False
 
 
 def main():
@@ -30,8 +32,10 @@ def main():
     args = parser.parse_args()
 
     notebooks = get_notebooks(args.dir)
-    # for notebook in notebooks:
-    #     update_notebook_metadata(notebook, args.metadata)
+
+    if COPY_ROCRATE:
+        for notebook in notebooks:
+            update_notebook_metadata(notebook, args.metadata)
 
     create_root_crate(args.dir, notebooks, args.metadata)
 
@@ -82,6 +86,13 @@ def generate_notebook_crate(notebook: Path, metadata: Path) -> ROCrate:
     return crate
 
 
+def id_ify(elements: List[str]) -> List[dict]:
+    """Wraps elements in a list with @id keys
+    eg, convert ['a', 'b'] to [{'@id': 'a'}, {'@id': 'b'}]
+    """
+    return [{"@id": element} for element in elements]
+
+
 def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
     """Adds notebook information to an ROCRate.
 
@@ -98,13 +109,19 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
     )
 
     # Add the notebook to the crate
+    """
+    The data in the notebook is simpler format than rocrate, eg:
+        "title": "Farms to freeways notebook",
+        "description": "A sample notebook for the Farms to Freeways data",
+        "input": ["arcp://name,farms-to-freeways/corpus/root"],
+    """
     properties = {
         "@type": ["File", "SoftwareApplication"],
         "name": notebook_metadata["title"],
         "description": notebook_metadata["description"],
-        "input": notebook_metadata["input"],
+        "input": id_ify(notebook_metadata["input"]),
         "encodingFormat": "application/x-ipynb+json",
-        "conformsTo": "https://purl.archive.org/textcommons/profile#Notebook"
+        "conformsTo": id_ify(["https://purl.archive.org/textcommons/profile#Notebook"])
     }
     file = crate.add(ContextEntity(crate, notebook.name, properties=properties))
 
