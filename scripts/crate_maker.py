@@ -58,7 +58,7 @@ def generate_notebook_crate(notebook: Path, metadata: Path) -> ROCrate:
     return crate
 
 
-def id_ify(elements: Union[List[str], str]) -> List[dict]:
+def wrap_list_with_id(elements: Union[List[str], str]) -> List[dict]:
     """Wraps elements in a list with @id keys
     eg, convert ['a', 'b'] to [{'@id': 'a'}, {'@id': 'b'}]
     """
@@ -93,9 +93,9 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
         "@type": ["File", "SoftwareApplication"],
         "name": notebook_metadata["title"],
         "description": notebook_metadata["description"],
-        "input": id_ify(notebook_metadata["input"]),
+        "input": wrap_list_with_id(notebook_metadata["input"]),
         "encodingFormat": "application/x-ipynb+json",
-        "conformsTo": id_ify("https://purl.archive.org/textcommons/profile#Notebook")
+        "conformsTo": wrap_list_with_id("https://purl.archive.org/textcommons/profile#Notebook")
     }
     file = crate.add_file(notebook, properties=properties)
 
