@@ -1,1 +1,5 @@
-{"project_name": "RO-Create metadata test", "project_description": "trying out the auto-crate", "creators": [{"orcid": "0000-0000-0000-0000", "name": "Mistica, Mel"}]}
+{
+  "project_name": "RO-Create metadata test",
+  "project_description": "trying out the auto-crate",
+  "creators": [{ "orcid": "0000-0001-6147-120X", "name": "Mistica, Mel" }]
+}
