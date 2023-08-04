@@ -41,7 +41,7 @@
             "encodingFormat": "application/x-ipynb+json",
             "input": [
                 {
-                    "@id": "arcp://name,farms-to-freeways/corpus/root"
+                    "@id": "arcp://name,farms-to-freeways-example-dataset"
                 }
             ],
             "name": "Farms to freeways notebook"
