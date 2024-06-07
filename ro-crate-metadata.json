@@ -4,7 +4,7 @@
         {
             "@id": "./",
             "@type": "Dataset",
-            "datePublished": "2024-06-07T05:11:59+00:00",
+            "datePublished": "2024-06-07T05:17:39+00:00",
             "hasPart": [
                 {
                     "@id": "farms-to-freeways.ipynb"
@@ -41,7 +41,7 @@
             "encodingFormat": "application/x-ipynb+json",
             "input": [
                 {
-                    "@id": "arcp://name,farms-to-freeways/corpus/root"
+                    "@id": "arcp://name,doi10.4225%2F35%2F555d661071c76"
                 }
             ],
             "name": "Farms to freeways notebook"
