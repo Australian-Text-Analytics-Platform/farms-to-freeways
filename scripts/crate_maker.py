@@ -87,7 +87,7 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
     The data in the notebook is simpler format than rocrate, eg:
         "title": "Farms to freeways notebook",
         "description": "A sample notebook for the Farms to Freeways data",
-        "input": ["arcp://name,farms-to-freeways/corpus/root"],
+        "input": ["arcp://name,doi10.4225%2F35%2F555d661071c76"],
     """
     properties = {
         "@type": ["File", "SoftwareApplication"],
@@ -95,7 +95,7 @@ def add_notebook(crate: ROCrate, notebook: Path, metadata: Path) -> None:
         "description": notebook_metadata["description"],
         "input": wrap_list_with_id(notebook_metadata["input"]),
         "encodingFormat": "application/x-ipynb+json",
-        "conformsTo": wrap_list_with_id("https://purl.archive.org/language-data-commons/profile#Notebook")
+        "conformsTo": wrap_list_with_id("https://w3id.org/ldac/profile#Notebook")
     }
     file = crate.add_file(notebook, properties=properties)
 
